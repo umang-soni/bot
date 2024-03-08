@@ -1,6 +1,5 @@
 const qrcode = require('qrcode-terminal');
 const { Client, LocalAuth } = require('whatsapp-web.js');
-require('dotenv').config();
 
 const whatsapp = new Client({
     authStrategy: new LocalAuth(),
@@ -15,6 +14,14 @@ whatsapp.on('qr', qr => {
 
 whatsapp.on('ready', () => {
     console.log("Client is ready");
+});
+whatsapp.on('message', async message => {
+    console.log('Message received:', message.body);
+    if (message.body === 'hello') {
+        console.log('Received hello message');
+        console.log(message)
+        message.reply("hi....this is chat bot");
+    }
 });
 
 
