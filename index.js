@@ -10,6 +10,7 @@ const whatsapp = new Client({
 let isInitialized = false; // Flag to track initialization status
 
 whatsapp.on('qr', qr => {
+    qrcode.setErrorLevel('M');
     qrcode.generate(qr, { small: true });
     console.log("Scan the QR code above with your phone's WhatsApp.");
 });
