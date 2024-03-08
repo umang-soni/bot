@@ -1,5 +1,8 @@
 const qrcode = require('qrcode-terminal');
 const { Client, LocalAuth } = require('whatsapp-web.js');
+const express=require("express")
+const app= express();
+const port=process.env.PORT||5000;
 
 const whatsapp = new Client({
     authStrategy: new LocalAuth(),
@@ -49,4 +52,5 @@ if (!isInitialized) {
             console.error('Initialization error:', err);
         });
 }
+app.listen(port);
 
